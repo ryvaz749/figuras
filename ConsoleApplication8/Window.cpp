@@ -6,31 +6,42 @@
 #include "facade.h"
 #include <iostream>
 #include "figura.h"
+#include "triangulo.h"
 using namespace std;
 //Window* window=nullptr;
+//la lista en donde se guardaran todas las figuras
 list<figura*> figuras;
 Window::Window()
 {
 	
 }
-class prueba{
-
-};
 void GamePaint(HDC hDC)
 {
-	
+	//se recorre toda la lista de las figuras
 	for (list<figura*>::iterator it = figuras.begin(); it != figuras.end(); it++) {
-		
+		//a cada figura se le ejecuta la funcion dibujar que sera diferente dependiendo de que tipo de figura es
 		(*it)->dibujar(hDC);
 	}
 }
-void Window::dibujar(){
-	
+/*template <typename u>
+void Window::dibujar(u* fig){
+	u* figu = new u(*fig);
+	figuras.push_back(figu);
+}*/
+//la funcion dibujar agrega la figura a la lista
+void Window::dibujar(figura * a) {
+	figuras.push_back(a);
 }
-int* a = new int(8);
+void Window::run()
+{
+	if (init()) {
+		while (isRun()) {
+			broadcast();
+		}
+	}
+}
 LRESULT CALLBACK esta(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-	int* b = a;
 	//GetWindowLong(hwnd,)
 	switch (msg)
 	{
@@ -106,6 +117,7 @@ bool Window::init()
 		return false;
 
 	//show up the window
+	::UpdateWindow(m_hwnd);
 	::ShowWindow(m_hwnd, SW_SHOW);
 	::UpdateWindow(m_hwnd);
 
@@ -138,12 +150,12 @@ bool Window::broadcast()
 	return true;
 }
 
-void Window::crearlinea(int x, int y, int alt, int an)
+/*void Window::crearlinea(int x, int y, int alt, int an)
 {
-	linea lin;
-	(lin).setposi(x,y);
-	(lin).seta(alt, an);
-	figuras.push_back(&lin);
+	linea* lin = new linea();
+	lin->setposi(x, y);
+	lin->seta(alt, an);
+	figuras.push_back(lin);
 }
 
 void Window::crearrectangulo(int x, int y, int alt, int an)
@@ -154,9 +166,15 @@ void Window::crearrectangulo(int x, int y, int alt, int an)
 	figuras.push_back(rec);
 }
 
-void Window::creartriangulo()
+void Window::creartriangulo(int x, int y, int alt, int an)
 {
-}
+	triangulo* tri = new triangulo();
+	tri->setposi(x, y);
+	tri->seta(alt, an);
+	figuras.push_back(tri);
+
+}*/
+
 
 
 bool Window::release()

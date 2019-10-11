@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <list>
 #include "facade.h"
+#include "rectangulo.h"
 using namespace std;
 class Window
 {
@@ -14,8 +15,11 @@ public:
 	bool broadcast();
 	void crearlinea(int x, int y, int alt, int an);
 	void crearrectangulo(int x, int y, int alt, int an);
-	void creartriangulo();
-	void dibujar();
+	void creartriangulo(int x, int y, int alt, int an);
+//	template<typename u>
+//	void dibujar(u* fig);
+	void dibujar(figura * a);
+	void run();
 	//LRESULT CALLBACK esta(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 	//Release the window

@@ -157,6 +157,7 @@
     <ClInclude Include="linea.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="rectangulo.h" />
+    <ClInclude Include="triangulo.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="rectangulo.cpp" />
+    <ClCompile Include="triangulo.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
